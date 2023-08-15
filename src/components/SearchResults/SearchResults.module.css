@@ -1,0 +1,16 @@
+.searchboxInput {
+  color: rgb(var(--background-start-rgb));
+}
+
+.refinementList {
+  background: #fff;
+}
+
+.hitsItem {
+  background: #fff;
+}
+
+.paginationItem {
+  background: #fff;
+  border-radius: 5px;
+}

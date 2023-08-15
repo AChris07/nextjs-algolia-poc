@@ -1,13 +1,9 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import App from '@/components/App'
-import Navbar from '@/components/Navbar'
 
 export default function Home() {
   return (
-    <App>
       <main className="container-fluid">
-        <Navbar />
         <div className="row justify-content-md-center">
           <div className={`col col-md-6 ${styles.description}`}>
             <p>
@@ -28,6 +24,5 @@ export default function Home() {
           />
         </div>
       </main>
-    </App>
   )
 }

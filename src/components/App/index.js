@@ -4,7 +4,7 @@ import { searchClient } from '@/utils/algolia'
 
 export default function App({ children }) {
   return (
-    <InstantSearch searchClient={searchClient} indexName={process.env.ALGOLIA_INDEX}>
+    <InstantSearch searchClient={searchClient} indexName={process.env.NEXT_PUBLIC_ALGOLIA_INDEX}>
       {children}
     </InstantSearch>
   )
