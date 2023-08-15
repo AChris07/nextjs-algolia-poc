@@ -26,6 +26,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex-grow-0">
+          {/* Site-wide searchbar with autocomplete. Built to reroute to a given URL
+            * with the necessary query parameters.
+            */}
           <Autocomplete
             searchUrl='/search'
             openOnFocus={true}

@@ -16,6 +16,11 @@ function redirectToSearchUrl(query, path = window.location.pathname) {
 }
 
 export default function Autocomplete({ searchUrl, ...props }) {
+  /**
+   * The Algolia Autocomplete component (used for autocomplete searchbars for
+   * site-wide searchbar use cases) dynamically adds the required behavior and markup
+   * to a given ref/node.
+   */
   const containerRef = useRef(null);
   const panelRootRef = useRef(null);
   const rootRef = useRef(null);
@@ -23,10 +28,20 @@ export default function Autocomplete({ searchUrl, ...props }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    /**
+     * On render or on props change, call the autocomplete widget to be rendered
+     * in the parent's ref.
+     */
     const search = autocomplete({
+      // The container node, we pass the container ref
       container: containerRef.current,
-      placeholder: 'Search for products',
+      // Pass the render callbacks to be used. The callbacks passed hitsPerPage
+      // depends on the framework being used (React, Preact, Angular, etc.).
+      // Use these for React.
       renderer: { createElement, Fragment, render: () => {} },
+      // Function to render the autocomplete, allows you to customize the render function.
+      // We add nodes to refs here, if we want to use them.
+      // Not required.
       render({ children }, root) {
         if (!panelRootRef.current || rootRef.current !== root) {
           rootRef.current = root;
@@ -37,7 +52,12 @@ export default function Autocomplete({ searchUrl, ...props }) {
 
         panelRootRef.current.render(children);
       },
+      // On submit callback. We add support to redirect with search page with
+      // query params.
       onSubmit: ({ state }) => redirectToSearchUrl(state.query, searchUrl),
+      // On select callback. Same as above.
+      onSelect: ({ item }) => redirectToSearchUrl(item.name, searchUrl),
+      // Required, configures the sources you want to get collections from.
       getSources: ({ query }) => [
         {
           sourceId: 'products',
@@ -55,7 +75,8 @@ export default function Autocomplete({ searchUrl, ...props }) {
               ],
             });
           },
-          onSelect: ({ item }) => redirectToSearchUrl(item.name, searchUrl),
+          // The Autocomplete component supports templating to customize
+          // hits and other elements.
           templates: {
             noResults() {
               return 'No results'

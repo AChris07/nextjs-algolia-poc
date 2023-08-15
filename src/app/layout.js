@@ -15,6 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/* This component includes the Algolia InstantSearch provider.
+          * All Algolia components should be set inside of it.
+          * If using a site-wide searchbar, it's recommended to set it in the
+          * outer section of the React App (ie. in the App section.)
+          */}
         <App>
           <Navbar />
           {children}
