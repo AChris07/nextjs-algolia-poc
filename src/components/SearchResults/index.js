@@ -22,11 +22,20 @@ export default function SearchResults() {
         */}
       <SearchBox classNames={{ input: styles.searchboxInput }} />
       {/* Refinement List (ie. facets)*/}
-      <RefinementList attribute="brand" classNames={{ root: 'col-12 col-xl-2', list: styles.refinementList }}/>
+      <RefinementList attribute="brand" classNames={{
+        root: 'col-12 col-xl-2',
+        list: styles.refinementList,
+        label: styles.refinementItemLabel,
+        labelText: styles.refinementItemLabelText,
+        count: styles.refinementItemCount,
+      }}/>
       {/* Hits, or results*/}
       <Hits hitComponent={Hit} classNames={{ root: 'col-12 col-xl-10', item: styles.hitsItem }} />
       {/* Pagination */}
-      <Pagination classNames={{ item: styles.paginationItem }} />
+      <Pagination classNames={{
+        item: styles.paginationItem,
+        link: styles.paginationItemLink,
+      }} />
     </section>
   )
 }

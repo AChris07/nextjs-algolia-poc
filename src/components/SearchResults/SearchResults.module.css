@@ -3,14 +3,36 @@
 }
 
 .refinementList {
-  background: #fff;
+  background: #000;
+  color: rgb(220, 220, 220);
+}
+
+.refinementItemLabel {
+  display: inline-flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.refinementItemLabelText {
+  white-space: nowrap;
+}
+
+.refinementItemCount {
+  height: 20px;
 }
 
 .hitsItem {
-  background: #fff;
+  background: #000;
+  color: rgb(220, 220, 220);
+  text-align: center;
 }
 
 .paginationItem {
-  background: #fff;
+  background: #000;
+  color: rgb(220, 220, 220);
   border-radius: 5px;
+}
+
+.paginationItemLink {
+  color: rgb(220, 220, 220);
 }
